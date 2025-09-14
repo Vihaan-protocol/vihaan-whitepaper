@@ -98,22 +98,30 @@ A user's share of the Community Reward Pool each epoch is determined by their Po
 
 ### **4. Growth & Distribution Strategy**
 
-#### **4.1 The Great Faucet Fiesta 🎉**
+#### **4.1 Genesis Distribution: Logarithmic Proof of Work**
 
-Vihaan will be launched with no pre-mine, Initial Coin Offering (ICO), or venture capital allocation. This is non-negotiable for a truly community-first project. The initial supply of VHC will be distributed directly to users worldwide through a captcha-based proof-of-work system. This method ensures that the only way to acquire VHC at genesis is through active participation, guaranteeing the broadest and most equitable initial distribution possible and preventing the early concentration of supply.
+Vihaan will be launched with no pre-mine, Initial Coin Offering (ICO), or venture capital allocation, a non-negotiable principle for a truly community-first protocol. The initial supply will be distributed through a one-time genesis event governed by **Logarithmic Proof of Work (LogPoW)**. This mechanism is engineered to ensure the broadest and most equitable initial distribution possible, directly upholding the 'Fair Distribution & Meritocracy' commandment.
 
-#### **4.2 The Anti-Bot Bootcamp: Account Maturation**
+The LogPoW system is designed with two primary features to prevent centralization:
 
-To prevent large-scale Sybil attacks aimed at farming rewards from the distribution programs, the Vihaan protocol incorporates an in-built **"Account Maturation"** system. Every new wallet begins in a **"probationary state."** An account only graduates to a **"mature state"** after it has met two conditions: existing for a minimum duration (e.g., 30 days) AND completing a minimum number of transactions (e.g., 50). During this probationary period, accounts are:
-*   Ineligible to claim the one-time Welcome Bonus.
-*   Unable to generate referral codes or receive referral rewards.
-*   Limited to earning a minimal fraction (e.g., 10%) of their calculated PoEA rewards.
+*   **ASIC-Resistant by Design:** The hashing algorithm is memory-hard, requiring significant RAM in addition to processing power. This makes it fundamentally resistant to the Application-Specific Integrated Circuits (ASICs) that centralize mining power in other networks, leveling the playing field for participation with consumer-grade hardware.
+*   **Logarithmic Reward Curve:** Unlike traditional Proof of Work where rewards are directly proportional to hashrate, LogPoW rewards participants based on the **logarithm of their contributed hashrate**. This creates sharply diminishing returns on investment for large-scale mining operations. An entity with 1,000 times the hashing power will not receive 1,000 times the reward, but a far smaller, logarithmically-scaled amount. This makes attempts to dominate the genesis event economically inefficient, valuing broad participation over raw capital.
+*   **Proof of Personhood Gateway:** To prevent Sybil attacks, where a single entity operates numerous small mining nodes, participation requires solving CAPTCHAs.
 
-This mechanism makes airdrop farming and referral abuse economically unviable, as it requires a significant and sustained period of genuine (or costly fake) activity to mature an account before it becomes eligible for the network's primary rewards.
+The VHC allocated during this genesis event is not disbursed as a liquid lump sum. Instead, it forms the foundational collateral for the user's entry into the Vihaan economy via the Welcome Credit Protocol, ensuring that even the earliest adopters are onboarded through active participation.
 
-#### **4.3 The Welcome Wagon & The Referral Engine**
+#### **4.2 The Welcome Credit Protocol: Onboarding Through Utility**
 
-A protocol-managed **Genesis Fund**, fed by 10% of the network's inflation, is dedicated to sustainable, long-term growth. It finances a one-time **Welcome Bonus** in VHC to new, *mature* accounts that complete a one-time user verification process. Furthermore, once an account is mature, the Vihaan Wallet unlocks access to a built-in **Referral System**. The protocol automatically pays both the referrer and the new user a small bonus from the Genesis Fund once the new user's account also reaches maturity. This creates a powerful, Sybil-resistant, and decentralized engine for viral growth.
+Vihaan's growth strategy replaces conventional airdrops, faucets, and bonuses—which are notoriously susceptible to farming and Sybil attacks—with a sustainable, incentive-aligned onboarding system called the **Welcome Credit Protocol**. This protocol is fully integrated with the Vihaan De-central Bank's 'Active Liquidity Generation' smart contract (the VHC Vault) and ensures that the true reward is earned through genuine participation, not merely by signing up.
+
+The process for a new, verified user is as follows:
+
+1.  **Trust Collateral Staking:** Upon successful verification, the protocol itself stakes a pre-defined amount of collateral (e.g., 20 VHC) on the new user's behalf within the VHC Vault. This is the **'Trust Collateral'**.
+2.  **Instant Welcome Credit:** The user is immediately empowered to mint and use a portion of that collateral (e.g., 10 VHC) as their **'Welcome Credit'**. This provides instant utility, allowing the user to begin transacting, registering a VNS name, and participating in the economy from the moment they join, solving the critical "cold start" problem for new entrants.
+3.  **Activity-Based Repayment:** The Welcome Credit is functionally a zero-interest loan from the protocol. This loan is repaid automatically and seamlessly over a provisional period (e.g., 60 days) by a portion of the **PoEA rewards** the user earns. By engaging in the very economic activity the protocol is designed to encourage, the user naturally repays their credit.
+4.  **Account Maturation and Reward Release:** Once the Welcome Credit is fully repaid through earned PoEA rewards, the user's account graduates to a **'Mature'** state. Upon maturation, the protocol releases its claim on the **full 'Trust Collateral'** (the entire 20 VHC), granting the user complete ownership of it as their final, earned reward.
+
+This model is inherently Sybil-resistant because the ultimate reward is locked behind a period of proven economic activity, making automated sign-ups unprofitable. It is a vastly superior onboarding mechanism, as it provides new users with immediate capital, teaches them the core PoEA mechanic, and perfectly aligns their incentives with the health and growth of the entire Vihaan economy from day one.
 
 ### **5. Conclusion**
 
