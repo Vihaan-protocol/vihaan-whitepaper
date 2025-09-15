@@ -98,17 +98,21 @@ A user's share of the Community Reward Pool each epoch is determined by their Po
 
 ### **4. Growth & Distribution Strategy**
 
-#### **4.1 Genesis Distribution: Logarithmic Proof of Work**
+### **4.1 Genesis Protocol: Calibrated Proof of Work**
 
-Vihaan will be launched with no pre-mine, Initial Coin Offering (ICO), or venture capital allocation, a non-negotiable principle for a truly community-first protocol. The initial supply will be distributed through a one-time genesis event governed by **Logarithmic Proof of Work (LogPoW)**. This mechanism is engineered to ensure the broadest and most equitable initial distribution possible, directly upholding the 'Fair Distribution & Meritocracy' commandment.
+Vihaan will be launched with no pre-mine, Initial Coin Offering (ICO), or venture capital allocation, a non-negotiable principle for a truly community-first protocol. The initial VHC supply is not created in a single event but is brought into existence by each new user through a unique onboarding process governed by **Calibrated Proof of Work (Cal-PoW)**. This mechanism is engineered to ensure that the initial stake is earned through tangible work and to directly tie the foundational value of VHC to the real-world cost of electricity, upholding the 'Fair Distribution & Meritocracy' commandment. First step would still be solving a CAPTCHA.
 
-The LogPoW system is designed with two primary features to prevent centralization:
+The Cal-PoW system is a multi-stage process a new node must complete to mint its initial stake:
 
-*   **ASIC-Resistant by Design:** The hashing algorithm is memory-hard, requiring significant RAM in addition to processing power. This makes it fundamentally resistant to the Application-Specific Integrated Circuits (ASICs) that centralize mining power in other networks, leveling the playing field for participation with consumer-grade hardware.
-*   **Logarithmic Reward Curve:** Unlike traditional Proof of Work where rewards are directly proportional to hashrate, LogPoW rewards participants based on the **logarithm of their contributed hashrate**. This creates sharply diminishing returns on investment for large-scale mining operations. An entity with 1,000 times the hashing power will not receive 1,000 times the reward, but a far smaller, logarithmically-scaled amount. This makes attempts to dominate the genesis event economically inefficient, valuing broad participation over raw capital.
-*   **Proof of Personhood Gateway:** To prevent Sybil attacks, where a single entity operates numerous small mining nodes, participation requires solving CAPTCHAs.
+1.  **Node Initialization & Benchmarking:** When a new node is created, a genesis block is created on its private account-chain. Immediately following this, the node must mine a "Time Block." This block contains a standardized, low-difficulty puzzle. Its sole purpose is to serve as a benchmark; the protocol measures the precise time taken for the node's hardware to solve it.
 
-The VHC allocated during this genesis event is not disbursed as a liquid lump sum. Instead, it forms the foundational collateral for the user's entry into the Vihaan economy via the Welcome Credit Protocol, ensuring that even the earliest adopters are onboarded through active participation.
+2.  **The Calibrated Welcome Block:** Using the time recorded from the Time Block, the protocol generates a final "Welcome Block." The Proof of Work difficulty for this block is **exponentially adaptive**. A more powerful node that solved the Time Block quickly will be assigned an exponentially more difficult puzzle for its Welcome Block, forcing it to expend a proportional amount of energy. This is the core "work" required to join the network.
+
+3.  **Collateral Minting:** **Upon the successful mining of the Calibrated Welcome Block**, the protocol mints 20 VHC. This is the user's earned reward and becomes the foundational "Trust Collateral" for their account.
+
+This calibrated difficulty curve is Vihaan's primary defense against centralization during the onboarding phase. It makes it economically inefficient for large-scale operations to use powerful hardware (like ASICs or mining farms) to create a multitude of new nodes, as they would face prohibitively high energy costs. The system inherently levels the playing field for users with consumer-grade hardware and directly enforces a "proof of real cost" for entry. To further prevent automated Sybil attacks, a Proof of Personhood gateway, such as solving a CAPTCHA, is required before initiating the process.
+
+The 20 VHC minted after solving the Welcome Block is not disbursed as a liquid lump sum. Instead, it immediately forms the foundational collateral for the user's entry into the Vihaan economy via the Welcome Credit Protocol, ensuring that all users are onboarded through active, meaningful participation.
 
 #### **4.2 The Welcome Credit Protocol: Onboarding Through Utility**
 
