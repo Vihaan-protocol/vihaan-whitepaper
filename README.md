@@ -79,8 +79,8 @@ The protocol itself manages a multi-faceted monetary policy through a set of tra
 
 *   **The Black Hole Protocol: Counterbalancing Forces 🔥:** To counteract inflation and tie the currency's value to its utility, Vihaan employs powerful, utility-driven deflationary mechanisms. All fees are sent to an irrecoverable address, a process the community has dubbed the **Literal Burn**.
     *   **Dynamic Network Integrity Fee:** While VHC-to-VHC transfers have no *protocol profit fee*, every transaction includes a tiny, algorithmically-adjusted micro-fee. This fee is always negligible for a genuine user but makes large-scale, rapid-fire spam attacks economically unviable. The fee's size is adjusted by the protocol based on network load, acting as a responsive anti-spam shield. This fee is immediately burned.
-    *   **Vihaan Naming Service (VNS):** Users can register a human-readable alias (e.g., `priya.vhc`). The small annual fee, paid in VHC, is provably burned.
-    *   **Protocol-Level Subscriptions:** For businesses using built-in recurring payment functions, a tiny, fixed percentage of each payment is automatically burned.
+    *   **Vihaan Naming Service (VNS):** Users can register a human-readable alias (e.g., `priyank.vhc`). The small annual fee, paid in VHC, is provably burned.
+    *   **Protocol-Level Subscriptions:** For businesses using built-in recurring payment and other functions, a tiny, fixed percentage of each payment is automatically burned.
     *   **Secure Data Anchoring:** The one-time fee to anchor a cryptographic hash of a document onto an account-chain is also burned.
 
 #### **3.2 The PoEA Formula: Rewarding Action**
