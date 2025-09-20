@@ -18,7 +18,7 @@ The currency's supply and value are anchored to the real-world cost of energy th
 
 The genesis of cryptocurrency was a whitepaper that promised a peer-to-peer electronic cash system—a financial network owned and operated by its users. Over a decade later, that promise remains largely unfulfilled. The landscape is dominated by Proof of Work protocols that are prohibitively slow and energy-intensive, and Proof of Stake protocols that often devolve into a "rich get richer" dynamic. Crucially, both models have produced assets with crippling price volatility, making them unsuitable for daily commerce and relegating them to the realm of speculation.
 
-#### **1.2 Introducing Vihaan: A Stable Currency ⚡**
+#### **1.2 Introducing Vihaan: A Stable Currency**
 
 Vihaan (a Sanskrit word for "dawn") represents a new beginning. It is an economic protocol engineered from first principles to achieve what others have not: **price stability**. Vihaan is designed to be a reliable medium of exchange by directly anchoring its foundational value to a tangible, real-world commodity: **electricity**. Unlike "digital gold" narratives that encourage hoarding, Vihaan is designed to be a practical currency that people can confidently **use** for transactions, savings, and commerce, without the fear of extreme value fluctuations.
 
@@ -43,7 +43,7 @@ Vihaan does not use a traditional, singular blockchain. Instead, it employs a **
 
 #### **2.2 The Node System**
 
-* **Guardians (Validator Nodes) 🛡️:** These are the dedicated, always-on workhorses that form the backbone of the network's security. They are run by users who have staked VHC. Their responsibilities are to listen for and validate all transactions, store the ledger, and participate in consensus when a conflicting transaction is detected.
+* **Guardians (Validator Nodes):** These are the dedicated, always-on workhorses that form the backbone of the network's security. They are run by users who have staked VHC. Their responsibilities are to listen for and validate all transactions, store the ledger, and participate in consensus when a conflicting transaction is detected.
 * **Sovereign Wallets (Light Nodes):** The official Vihaan wallet is your personal, lightweight node. It maintains a full history of *your own* account-chain and cryptographically signs all transactions locally on your device. This is the **Sovereignty Guarantee**, meaning you never need to trust a third-party server to know your balance or initiate a transaction.
 
 #### **2.3 The Consensus Engine: Randomized Proof of Stake (RPoS)**
