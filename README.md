@@ -4,13 +4,13 @@
 
 ### **Abstract**
 
-Project Vihaan introduces a cryptocurrency engineered to function as a practical, high-performance medium of exchange for the global economy. It directly solves the critical issues of transaction fees, speed, scalability, and price volatility that have prevented the widespread adoption of digital currencies for daily use.
+Project Vihaan introduces a cryptocurrency engineered to function as a practical, high-performance medium of exchange. It directly solves the critical issues of transaction fees, speed, scalability, and price volatility that have prevented the widespread adoption of digital currencies.
 
-Vihaan's foundation is a **block-lattice** architecture. This data structure, where each user operates their own blockchain, enables asynchronous, near-instantaneous, and completely **feeless** transactions.
+Vihaan's foundation is a **block-lattice** architecture. This data structure enables asynchronous, near-instantaneous, and completely **feeless** transactions. To prevent spam, the protocol uses a dynamic Proof of Work system as a rate-limiter, which is imperceptible to normal users but makes malicious abuse computationally expensive.
 
-The network is secured by a two-node system: **Guardian Nodes**, which validate transactions, and **Sovereign Wallets**, which grant users complete and exclusive control over their funds. Consensus is achieved through an energy-efficient **Delegated Proof of Stake (DPoS)** system. In this model, Guardians receive no direct financial rewards from the protocol; they are run by participants who are invested in the health and utility of the network.
+The network is secured by a two-node system: **Guardian Nodes** that validate transactions and **Sovereign Wallets** that grant users exclusive control over their funds. Consensus is achieved through an incentivized **Delegated Proof of Stake (DPoS)** system. Guardians must stake a significant quantity of Vihaan Coin (VHC), which is subject to **slashing** for malicious behavior. In return for securing the network, Guardians are rewarded via a fixed **1% annual inflation**, distributed daily based on their voting weight.
 
-To achieve its primary goal of price stability, Vihaan detaches currency issuance from network security. New coins are created through an open and perpetual **Calibrated Proof of Work (Cal-PoW)** system. This system uses a unique **Memory-Hard Latency Loop** puzzle, which anchors the cost of minting to the real-world price of electricity and consumer-grade hardware. This creates a powerful economic equilibrium, ensuring the currency's value remains stable and resistant to speculative volatility.
+To achieve its primary goal of price stability, Vihaan detaches user-driven currency issuance from network security rewards. New coins can be created on-demand by any user through an open **Calibrated Proof of Work (Cal-PoW)** system. This process anchors the currency's value to the real-world cost of electricity, ensuring the currency remains stable and resistant to speculative volatility.
 
 ---
 
@@ -18,98 +18,111 @@ To achieve its primary goal of price stability, Vihaan detaches currency issuanc
 
 #### **1.1 The Unfulfilled Promise of Cryptocurrency**
 
-The original vision for cryptocurrency was a peer-to-peer electronic cash system—a decentralized, user-owned financial network. Over a decade later, this vision remains largely unfulfilled. The landscape is dominated by assets that are too slow, prohibitively expensive to transact, and, most importantly, too volatile for practical commerce. Their utility has shifted from a medium of exchange to a vehicle for speculation.
+The original vision for cryptocurrency was a peer-to-peer electronic cash system. Today, most digital assets are too slow, expensive, and volatile for practical commerce, functioning instead as speculative vehicles.
 
 #### **1.2 The Vihaan Solution: A Living Currency**
 
-Vihaan (a Sanskrit word for "dawn") represents a new beginning. It is an economic protocol engineered to be **a living currency for a living world**. This philosophy guides its design, which is focused on three unwavering principles:
+Vihaan (a Sanskrit word for "dawn") is engineered to be **a living currency for a living world**. This philosophy guides its design, which is focused on unwavering principles:
 
-1.  **Instant & Feeless:** Transactions must be fast and free, reflecting the seamless nature of digital information.
-2.  **Radically Accessible:** The system must be open to all, without barriers to participation or use.
+1.  **Instant & Feeless:** Transactions must be fast and free.
+2.  **Economically Secure:** The network must be protected by clear and robust economic incentives for honest participation and penalties for malicious acts.
 3.  **Inherently Stable:** The currency's value must be anchored to a real-world metric to give users and merchants the confidence to transact.
-
-Vihaan is designed to be a currency that flows, not one that is hoarded.
 
 ---
 
 ### **2. The Vihaan Architecture: A Foundational Leap**
 
-#### **2.1 Beyond Blockchain: The Block-Lattice Ledger**
+#### **2.1 The Block-Lattice Ledger**
 
-Vihaan does not use a singular, monolithic blockchain. Instead, it employs a **block-lattice**, a type of Directed Acyclic Graph (DAG) that is profoundly more efficient for transactions.
-
-*   **Individual Account-Chains:** In a block-lattice, every user has their own personal blockchain, known as an "account-chain." Only the owner of the private key can add blocks (transactions) to their own chain.
-*   **Asynchronous Two-Step Transactions:** A transaction is a simple handshake between two account-chains, consisting of a `send` block and a corresponding `receive` block. Because these actions occur on independent chains, they can be processed in parallel by the network, resulting in near-instantaneous settlement.
-
-This architecture is the key to Vihaan's performance. It eliminates the need for a competitive, fee-driven "mempool" and global block creation, making the network inherently fast, scalable, and **feeless**.
+Vihaan employs a **block-lattice**, a Directed Acyclic Graph (DAG) structure where every user has their own personal blockchain ("account-chain"). A transaction consists of a `send` block on the sender's chain and a `receive` block on the receiver's chain. These are processed asynchronously, enabling near-instantaneous and **feeless** transactions at scale.
 
 #### **2.2 The Two-Node System**
 
-The Vihaan network is comprised of two distinct types of software participants:
+*   **Guardian Nodes (Validators):** The security backbone of the network.
+*   **Sovereign Wallets (User Nodes):** Lightweight wallets that give users complete control over their funds.
 
-*   **Guardian Nodes (Validators):** These are the workhorses of the network, run by dedicated community members, businesses, and organizations. Their responsibility is to validate and confirm all transactions, ensuring the integrity of the ledger.
-*   **Sovereign Wallets (User Nodes):** The official Vihaan wallet is a lightweight node that guarantees user sovereignty. It holds your private keys and signs all transactions locally on your device. This ensures you never have to trust a third party. **You are your own bank.**
+#### **2.3 Spam & Ledger Bloat Resistance**
+
+To prevent a malicious actor from bloating the ledger with limitless, zero-cost transactions, Vihaan implements two layers of defense:
+
+*   **Dynamic Proof of Work (dPoW):** Every transaction requires a tiny, trivial amount of computational work, calculated locally on the user's device in a fraction of a second. If a user attempts to send transactions at an abnormally high rate, the difficulty of this PoW increases for them automatically. This acts as a powerful rate-limiter, making large-scale spam attacks computationally expensive and impractical, while remaining completely unnoticeable to normal users.
+*   **Ledger Pruning (Future Implementation):** To manage long-term ledger size, nodes will eventually have the option to prune old account-chains that have reached a zero balance. This allows the network to maintain a lean and efficient history without sacrificing security.
 
 ---
 
-### **3. Consensus Engine: Feeless Delegated Proof of Stake (DPoS)**
+### **3. Consensus & Security: Incentivized DPoS**
 
-To prevent fraudulent transactions (e.g., a "double-spend"), the network must have a mechanism to reach a definitive consensus. Vihaan uses a non-incentivized DPoS model for its efficiency, speed, and decentralization.
+Vihaan uses a Delegated Proof of Stake system with direct economic incentives and penalties to ensure robust network integrity.
 
 #### **3.1 The DPoS Mechanism**
 
-1.  **Delegation:** Any user can designate a Guardian Node as their trusted representative. This action is simple, reversible, and does not involve sending or locking funds. Users simply "point" their wallet's voting weight to their chosen Guardian.
-2.  **Voting Weight:** The voting weight of each account is directly proportional to its VHC balance. Therefore, Guardians who earn the trust of the community will have more influence.
-3.  **Transaction Finality:** When a conflicting transaction is detected, Guardians vote on which one is canonical. These votes are tallied, and once a quorum of voting weight confirms a transaction, it is considered irreversible. This process happens in seconds.
+Users delegate the voting weight of their VHC to Guardian Nodes. A Guardian's influence in consensus is proportional to the total VHC delegated to it. When a conflicting transaction is detected, a weighted vote among Guardians determines the canonical transaction with near-instant finality.
 
-#### **3.2 Guardian Incentives: A Public Good Model**
+#### **3.2 Becoming a Guardian: Staking & Slashing**
 
-Critically, the Vihaan protocol is **feeless**, and as such, **Guardians receive no direct financial reward or incentive from the protocol.**
+To be eligible to participate in consensus, a user must register their node and lock up a significant quantity of VHC as a security deposit.
 
-Running a Guardian node is an act of supporting a public good. The motivation for running a node comes from indirect benefits, such as:
-*   **Businesses and Services:** A company that accepts or builds on Vihaan has a vested interest in ensuring the network is fast, secure, and reliable.
-*   **Invested Individuals:** Enthusiasts and large holders are incentivized to protect the value and utility of their own investment by contributing to network health.
-*   **Community Mindset:** A strong community that believes in the project's philosophy will contribute resources to see it succeed.
+*   **Minimum Stake Requirement:** The minimum stake required to register a Guardian node is fixed at **1,000,000 VHC**.
+*   **Stake Lock-up Period:** Once staked, these funds are locked for a minimum of **30 days** after a Guardian voluntarily unregisters, preventing short-term attacks.
+*   **Slashing Conditions:**
+    *   **Major Offense (Malicious Vote):** **100%** of the stake is slashed for definitively malicious acts like voting for conflicting transactions (double-spending).
+    *   **Minor Offense (Excessive Downtime):** **5%** of the stake is slashed if a Guardian node's uptime falls below **95%** over a rolling **30-day** period.
 
-This model treats the Vihaan network as a digital commons, secured by its most invested participants for the benefit of all users.
+#### **3.3 Guardian Incentives: Protocol Inflation**
+
+In return for securing the network, Guardians are rewarded via a predictable, fixed **1% annual protocol inflation**. The new coins from this inflation are created by the protocol and distributed daily to all active and honest Guardian nodes.
+
+*   **Reward Distribution Mechanics:** The daily reward pool (approximately **0.002721%** of the total supply) is distributed to Guardians proportional to their total delegated voting weight.
 
 ---
 
 ### **4. Currency Issuance & Price Stability: The Economic Core**
 
-This is Vihaan's most critical innovation. The creation of new Vihaan Coin (VHC) is entirely separate from the DPoS security layer. It is an open, perpetual, and calibrated process designed to create a stable currency.
+Separate from the protocol inflation used for security, Vihaan's value is stabilized by an open issuance mechanism available to all users.
 
 #### **4.1 On-Demand Issuance: Calibrated Proof of Work (Cal-PoW)**
 
-Any user, at any time, can mint a fixed amount of new VHC by solving a Calibrated Proof of Work puzzle. This is not a competitive mining race; it is a standardized process with a predictable cost.
+Any user can mint a fixed amount of **1 VHC** by solving a Calibrated Proof of Work puzzle. This is not a competitive race but a standardized process with a predictable cost.
 
 #### **4.2 The Puzzle: The Memory-Hard Latency Loop**
 
-To ensure fair access and prevent centralization by specialized hardware (ASICs), the puzzle is **memory-hard**, designed to be bound by the speed of commodity RAM.
+The puzzle is **memory-hard**, designed to be bottlenecked by the speed of commodity RAM to ensure fair access and prevent ASIC-driven centralization.
 
-*   **The Mechanism:** The puzzle requires a user's computer to allocate a large, fixed block of RAM (e.g., 2 GB) and then perform a long, sequential chain of random-access reads within that block. This process is bottlenecked by memory latency, a physical constraint that levels the playing field between consumer hardware and specialized industrial machines.
-*   **The Goal:** The user's software repeats this memory-intensive process with different inputs ("nonces") until it finds a solution that produces a valid cryptographic hash.
-*   **Verifiability:** Finding this solution is computationally expensive and time-consuming (Proof of Work). However, verifying the solution is trivial. Any node on the network can take the provided solution and run the calculation just once to confirm its validity in a fraction of a second.
+*   **Technical Specifications:** The puzzle requires a fixed RAM allocation of **2 GB** and involves a sequential chain of **2^28** (approx. 268 million) random-access memory reads. The goal is to anchor the minting cost to approximately **₹1 (approx. $0.012 USD)** worth of electricity.
 
-#### **4.3 The Result: Natural Calibration and ASIC Resistance**
+#### **4.3 The Price Anchor Effect**
 
-This puzzle design directly links the cost of minting a new coin to the global average price of electricity and commodity hardware. While a high-end server may solve the puzzle faster, it consumes proportionally more power, resulting in a remarkably consistent **total energy cost** per minted coin across all hardware classes.
+This on-demand issuance creates a powerful economic equilibrium.
 
-#### **4.4 The Price Anchor Effect: A Stable Medium of Exchange**
-
-This on-demand issuance mechanism creates a powerful economic equilibrium that anchors the market price of VHC.
-
-*   **Price Ceiling:** If the market price of VHC rises above the energy cost to mint it, rational actors will mint new VHC instead of buying it. This increases the liquid supply, putting **downward pressure** on the price, pushing it back toward its intrinsic production cost.
-*   **Price Floor:** If the market price of VHC falls below the cost to mint it, no one will expend electricity to create new coins at a loss. The creation of new supply halts, allowing market demand to put **upward pressure** on the price.
-
-This arbitrage loop makes extreme speculative bubbles and crashes highly unlikely, providing the stability required for a truly usable currency.
+*   **Price Ceiling:** If VHC's market price rises above the energy cost to mint it, users will mint new coins, increasing supply and putting **downward pressure** on the price.
+*   **Price Floor:** If VHC's market price falls below the cost to mint it, minting halts. Market demand then puts **upward pressure** on the price.
 
 ---
 
-### **5. Conclusion**
+### **5. Tokenomics & Initial Distribution**
 
-Project Vihaan is a comprehensive system designed to deliver on the original promise of cryptocurrency. By combining a fast and feeless block-lattice architecture with a robust, non-incentivized DPoS consensus and a revolutionary price-stabilizing issuance model, Vihaan offers a complete solution to the problems that have plagued digital currencies.
+#### **5.1 Token Details**
 
-It is a currency built not for speculation, but for utility. It is designed to be spent, sent, and saved with confidence. It is a stable foundation for a new generation of financial services.
+*   **Name:** Vihaan Coin
+*   **Ticker:** VHC
+
+#### **5.2 Supply Model**
+
+Vihaan has a dynamic supply with a dual-issuance model and no hard cap:
+
+1.  **Primary Issuance (Cal-PoW):** The majority of the supply is created on-demand by users, anchoring the currency's value.
+2.  **Security Issuance (Inflation):** A fixed 1% annual inflation on the total supply is created by the protocol to reward Guardian nodes.
+
+#### **5.3 Initial Supply & Distribution**
+
+Vihaan is designed as a "fair launch" project to ensure maximum decentralization and equal opportunity.
+
+*   **Initial Supply:** **0 VHC**. There is no pre-mine, no initial coin offering (ICO), and no allocation for founders, private investors, or insiders. The entire supply must be brought into existence through the publicly accessible Calibrated Proof of Work mechanism.
+
+---
+
+### **6. Conclusion**
+
+Project Vihaan is a comprehensive system designed to deliver on the original promise of cryptocurrency. It combines a feeless, instantaneous transaction layer with a robustly secure, incentivized consensus model and a revolutionary price-stabilizing issuance mechanism. By defining clear economic rules and technical parameters, Vihaan provides a complete blueprint for a currency built not for speculation, but for lasting utility.
 
 It is **a living currency for a living world.**
