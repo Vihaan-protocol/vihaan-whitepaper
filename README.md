@@ -63,15 +63,23 @@ The most significant innovation in Vihaan is its economic model, designed to cre
 
 Anyone, at any time, can mint a fixed amount of **1 VHC** by solving a computational puzzle. This **Calibrated Proof of Work** is not a competitive mining race. It is a standardized process with a predictable cost, open to all participants.
 
-#### **3.2 The Cal-PoW Puzzle: Sequential Memory-Hard Hash Chain (SMHC)**
+#### **3.2 The Cal-PoW Puzzle: Representative-Anchored Dynamic Difficulty (RADD)**
 
-The puzzle is a practical implementation of a **Verifiable Delay Function (VDF)**, designed to be ASIC-resistant and fair.
+The "sinking anchor" problem—where hardware improvements (Moore's Law) make a *fixed* puzzle cheaper over time—is the primary failure of static Proof-of-Work anchors. Vihaan solves this by anchoring its value not to a fixed number of hashes, but to a fixed unit of **human time**.
 
-*   **Objective: To establish a fixed, transparent, and predictable computational cost for minting 1 VHC. The puzzle is designed with a fixed difficulty, ensuring that the real-world cost (in electricity and hardware amortization) is determined by market competition and hardware efficiency, not by a centralized or dynamic parameter.**
-*   **Technical Specifications:**
-    *   **Algorithm:** A sequential chain of **2^28 (268,435,456)** iterations of the **BLAKE3** hashing algorithm.
-    *   **Memory Requirement:** The algorithm requires a dedicated memory buffer of **2 GiB (Gibibytes)**. Each iteration involves multiple random-access reads from this buffer, with the input of the next hash being dependent on the output of the previous one.
-    *   **ASIC Resistance:** The bottleneck of this process is **memory latency**—the physical time it takes to fetch data from RAM. This is a deliberate design that cannot be easily optimized by parallel-processing hardware like GPUs or ASICs, ensuring that standard consumer hardware remains competitive.
+* **Objective:** To establish a stable, real-world cost for minting 1 VHC. This is achieved by targeting a **fixed solve time** (e.g., `T = 5 minutes`) on standard consumer hardware. The computational difficulty is dynamic, adjusting weekly to ensure the minting cost remains stable.
+
+* **Mechanism: The "Representative Oracle"**
+    The puzzle's difficulty, `D` (the number of sequential memory-hard hashes), is not a hard-coded constant. It is a dynamic network variable set by the same Open Representative Voting (ORV) consensus mechanism that secures the network.
+
+    1.  **Target Time (T):** The protocol contains a hard-coded constant: `T = 5 minutes`.
+    2.  **Continuous Benchmarking:** All Representatives (validators) continuously benchmark the puzzle, measuring how long it takes *them* to solve for 1 VHC with the current difficulty `D`.
+    3.  **Weekly Vote:** Once per week, every Representative publicly votes on what the new difficulty `D` should be, based on their goal of hitting the 5-minute target. (e.g., "My hardware solved it in 4 minutes, so I vote to increase `D` by 25%").
+    4.  **Consensus:** The network's official difficulty `D` for the next minting epoch (the next week) is the **delegated-vote-weighted median** of all Representative votes.
+
+* **Bootstrapping:** At launch, `D` is set to a very low initial value. This allows for the "massive initial minting" gold rush. Representatives will then automatically and rapidly vote to increase `D` over the first few weeks until the 5-minute target is stably achieved, seamlessly transitioning the network from its launch phase to its stable state.
+
+* **ASIC Resistance:** The puzzle's underlying algorithm (Sequential Memory-Hard Hash Chain) remains. The bottleneck is still **memory latency**, not parallel processing, ensuring that standard consumer hardware (which Representatives run) remains the benchmark for setting the difficulty.
 
 #### **3.3 Rapid Puzzle Verification**
 
@@ -86,6 +94,10 @@ This on-demand issuance mechanism creates a powerful economic equilibrium.
 *   **Price Ceiling:** If the market price of 1 VHC rises significantly above the energy cost to mint it, rational actors will be incentivized to mint new coins and sell them for a profit. This influx of new supply will exert **downward pressure** on the price, guiding it back toward the cost of production.
 *   **The Source of Value (The "Demand" Floor): The Cal-PoW mechanism does not create a mechanical price floor. If market demand collapses, the price can fall below the minting cost, at which point new issuance will simply cease. Like all currencies (including fiat and Bitcoin), Vihaan's value floor is not derived from its cost of production, but from the collective trust, network effect, and market demand from its users. Vihaan is designed to foster this trust and demand organically by solving the problems that prevent others from being used. Its core value proposition is its utility. By providing an instant, feeless, and decentralized medium of exchange, its utility as a practical payment system is the foundation for its demand. The price stability offered by the "ceiling" anchor makes it usable for merchants and savers, creating a strong foundation for social consensus. This utility-driven demand, not the minting cost, forms the basis of its long-term value.**
 
+**Security of the Monetary Policy:** This "Representative Oracle" model is secure because its incentives are aligned with the network's health. A rational concern is that Representatives (who are also minters) might collude to vote for a low difficulty (`D`) to make minting cheaper.
+
+This attack is transparent and economically self-defeating. A Representative's entire business model (their 80% discount formula) depends on the trust of their delegators. Voting for a low `D` is a public, on-chain act of deliberate inflation. Any user can see this malicious vote and will **immediately re-delegate their vote** away from the "inflationist" rep to an honest one. The short-term profit from cheating is microscopic compared to the total and permanent loss of their delegated vote and their entire minting-discount income.
+
 ---
 
 ### **4. Network Security & Incentivization**
@@ -96,11 +108,16 @@ To ensure the long-term health and decentralization of the network, Vihaan provi
 
 Instead of being rewarded through protocol inflation, registered Representatives receive a **discount on the Cal-PoW puzzle difficulty**. This economic incentive is kept separate from the consensus mechanism's logarithmic voting weight. The discount is directly proportional to the total linear amount of VHC delegated to the Representative, rewarding them for the trust they have earned from the community.
 
-*   **Discount Formula:**
-    `Discount Percentage = (Representative's Linear Delegated Vote / Total Linear Delegated Vote Online) * 20%`
-*   **Maximum Discount:** The formula is capped to provide a maximum possible discount of **20%** to a single entity, even if they were to hypothetically control 100% of the vote.
+* **Discount Formula:**
+    `Discount Percentage = (Representative's Linear Delegated Vote / Total Linear Delegated Vote Online) * 80%`
 
-This model creates a balanced system. The logarithmic voting weight encourages decentralization at the consensus level by diminishing the power of single large entities. Simultaneously, the linear discount ensures that the economic incentive to run a node remains strong and directly proportional to the amount of stake entrusted to the Representative. A Representative with a larger delegated stake earns a larger discount, allowing them to mint VHC for a lower electricity cost and creating a profitable incentive to maintain a reliable, high-performance node.
+* **Hard Cap & Anti-Centralization:** The maximum discount any single representative can receive is hard-capped at **20%**.
+
+This model creates a balanced system. The logarithmic voting weight encourages decentralization at the consensus level. Simultaneously, the linear discount ensures the economic incentive is strong and profitable.
+
+A Representative with a **5% vote share** (a healthy, trusted node) earns a **4% discount** (`5% * 80% = 4%`). This 4% margin on a high-volume minting operation is a highly profitable incentive that easily covers the operational costs of a secure node.
+
+Crucially, the 20% hard cap is hit if a representative acquires **25% of the total delegated vote** (`25% * 80% = 20%`). This creates a powerful economic disincentive against further centralization; a representative who controls 51% of the vote receives *no additional reward* for their excess (and dangerous) vote share, making centralization unprofitable.
 
 ---
 
