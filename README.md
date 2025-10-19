@@ -102,8 +102,6 @@ Instead of being rewarded through protocol inflation, registered Representatives
 
 This model creates a balanced system. The logarithmic voting weight encourages decentralization at the consensus level by diminishing the power of single large entities. Simultaneously, the linear discount ensures that the economic incentive to run a node remains strong and directly proportional to the amount of stake entrusted to the Representative. A Representative with a larger delegated stake earns a larger discount, allowing them to mint VHC for a lower electricity cost and creating a profitable incentive to maintain a reliable, high-performance node.
 
-**Critical Incentive Consideration: It is crucial to acknowledge that this entire incentive model is contingent on minting being profitable for Representatives. The model functions as long as the Market Price of 1 VHC remains higher than the Representative's discounted minting cost. If the market price were to fall below this level for a sustained period, the direct economic incentive to operate a node would disappear. In such a scenario, network security would revert to relying on altruistic node operators, similar to the current Nano model.**
-
 ---
 
 ### **5. Tokenomics**
