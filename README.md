@@ -1,6 +1,4 @@
-## **Project Vihaan: A Whitepaper**
-
-**Version 1.0**
+## **Project Vihaan: Whitepaper**
 
 ### **Abstract**
 
@@ -40,7 +38,7 @@ Instead of a single, monolithic blockchain, Vihaan employs a **block-lattice**, 
 
 Network consensus is achieved through a lightweight and efficient Delegated Proof of Stake (DPoS) variant called Open Representative Voting.
 *   **Delegation:** Any user can delegate the voting weight of their VHC balance to a **Representative** node of their choice, at no cost. The user retains full control of their funds.
-*   **Voting:** When a conflicting transaction (e.g., a double-spend) is detected, online Representative nodes vote on which transaction is valid. The vote is weighted by the total amount of VHC delegated to each Representative. A transaction is confirmed once it has received votes from Representatives holding over 50% of the online voting weight.
+*   **Voting:** When a conflicting transaction (e.g., a double-spend) is detected, online Representative nodes vote on which transaction is valid. **The vote is weighted logarithmically based on the total amount of VHC delegated to each Representative. This means that while larger representatives have more influence, their power does not grow linearly with their delegated stake, promoting greater network decentralization and mitigating the risk of voting power concentration.** A transaction is confirmed once it has received votes from Representatives holding over 50% of the online voting weight.
 *   **Security Model:** This system is secure, decentralized, and energy-efficient. It notably **does not involve staking, fund-locking, or slashing penalties**, removing barriers to participation and risk for users.
 
 #### **2.3 The Integrated Node and Sovereign Wallet**
@@ -96,13 +94,13 @@ To ensure the long-term health and decentralization of the network, Vihaan provi
 
 #### **4.1 Dynamic Minting Discount for Representatives**
 
-Instead of being rewarded through protocol inflation, registered Representatives receive a **discount on the Cal-PoW puzzle difficulty**. This discount is not fixed; it is dynamically weighted based on a Representative's contribution to network consensus, measured by their total delegated vote weight.
+Instead of being rewarded through protocol inflation, registered Representatives receive a **discount on the Cal-PoW puzzle difficulty**. **This economic incentive is kept separate from the consensus mechanism's logarithmic voting weight. The discount is directly proportional to the total linear amount of VHC delegated to the Representative, rewarding them for the trust they have earned from the community.**
 
 *   **Discount Formula:**
-    `Discount Percentage = (Representative's Delegated Vote / Total Online Voting Weight) * 20%`
+    `Discount Percentage = (Representative's Linear Delegated Vote / Total Linear Delegated Vote Online) * 20%`
 *   **Maximum Discount:** The formula is capped to provide a maximum possible discount of **20%** to a single entity, even if they were to hypothetically control 100% of the vote.
 
-This model directly rewards Representatives who earn the trust of the community. A Representative with a larger delegated vote weight contributes more to network security and thus earns a larger discount, allowing them to mint VHC for a lower electricity cost and creating a profitable incentive to maintain a reliable, high-performance node.
+**This model creates a balanced system. The logarithmic voting weight encourages decentralization at the consensus level by diminishing the power of single large entities. Simultaneously, the linear discount ensures that the economic incentive to run a node remains strong and directly proportional to the amount of stake entrusted to the Representative.** A Representative with a larger delegated stake earns a larger discount, allowing them to mint VHC for a lower electricity cost and creating a profitable incentive to maintain a reliable, high-performance node.
 
 ---
 
